@@ -1,29 +1,46 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "monty.h"
 
 /**
- * get_op - get the function corresponding to an opcode
- * @opcode: the opcode
+ * get_op - function searches for a match between opcode and text
+ * and returns the corresponding function
+ * @opcode: the opcode string
+ * @argument: the argument string
  *
- * Return: a function pointer to the corresponding opcode function, or NULL
- * if the opcode is not recognized
+ * Return: pointer to the matching function
  */
-void (*get_op(char *opcode))(stack_t **, unsigned int)
+void (*get_op(char *opcode, char *argument))(stack_t **, unsigned int)
 {
+    unsigned int i = 0;
     instruction_t ops[] = {
         {"push", push},
         {"pall", pall},
+        {"pint", pint},
+        {"pop", pop},
+        {"swap", swap},
+        {"add", add},
+        {"nop", nop},
         {NULL, NULL}
     };
-    int i;
 
-    /* Search the instruction array for a matching opcode */
-    for (i = 0; ops[i].opcode != NULL; i++)
+    /* Check if the opcode is a comment */
+    if (opcode[0] == '#')
+        return (nop);
+
+    /* Search for a matching opcode */
+    while (ops[i].opcode)
+    {
         if (strcmp(ops[i].opcode, opcode) == 0)
-            return (ops[i].f);
+        {
+            /* Check for a queue push opcode */
+            if (arg.flag == 1 && strcmp(ops[i].opcode, "push") == 0)
+                return (qpush);
 
-    /* Return NULL if no matching opcode was found */
-    return (NULL);
+            return (ops[i].f);
+        }
+
+        i++;
+    }
+
+    fprintf(stderr, "Error: unknown instruction %s\n", opcode);
+    exit(EXIT_FAILURE);
 }
