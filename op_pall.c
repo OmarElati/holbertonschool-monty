@@ -9,8 +9,8 @@
  */
 void pall(stack_t **stack, unsigned int nline)
 {
-	stack_t *temp;
-	(void)nline;
+	stack_t *temp = *stack;
+	(void) nline;
 
 	temp = *stack;
 	while (temp)
