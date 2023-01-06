@@ -9,13 +9,11 @@
 #include <ctype.h>
 
 /**
- * struct stack_s - doubly linked list representation of a stack (or queue)
- * @n: integer
- * @prev: points to the previous element of the stack (or queue)
- * @next: points to the next element of the stack (or queue)
+ * struct arg_s - ..
+ * @arg: ..
+ * @flag: ..
  *
- * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO Holberton project
+ * Description: ..
  */
 typedef struct arg_s
 {
@@ -57,7 +55,7 @@ typedef struct instruction_s
 
 /**
  * struct line - contents of line and corresponding number
- * @contents: array of tokens read from the line
+ * @content: array of tokens read from the line
  * @number: the line number
  *
  * Description: contents of a line and corresponding number
@@ -69,13 +67,12 @@ typedef struct line
 } line_t;
 
 /**
- * struct stack_s - doubly linked list representation of a stack (or queue)
- * @n: integer
- * @prev: points to the previous element of the stack (or queue)
- * @next: points to the next element of the stack (or queue)
+ * struct meta_s - ..
+ * @buf: ..
+ * @stack: ..
+ * @file: ..
  *
- * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO Holberton project
+ * Description: ..
  */
 typedef struct meta_s
 {
@@ -95,13 +92,14 @@ void parseline(line_t *line, char *buffer);
 /* Verification functions */
 bool comment_check(line_t line);
 void push_check(line_t line, meta_t *meta, char *opcode);
+int main(int argc, char *argv[]);
 
 /* Stack manipulation functions */
 void push(stack_t **stack, unsigned int nline);
 void pall(stack_t **stack, unsigned int nline);
 void pint(stack_t **stack, unsigned int nline);
 void pop(stack_t **stack, unsigned int nline);
-void swap(stack_t **stack, unsigned int nline);	
+void swap(stack_t **stack, unsigned int nline);
 void nop(stack_t **stack, unsigned int nline);
 void rotl(stack_t **stack, unsigned int nline);
 void rotlop(stack_t **stack, unsigned int nline);

@@ -13,7 +13,7 @@ bool comment_check(line_t line)
 	if (!line.content[0])
 	{
 		free(line.content);
-		return (true);	
+		return (true);
 	}
 
 	if (line.content[0][0] == '#')
