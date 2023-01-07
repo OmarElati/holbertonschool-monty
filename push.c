@@ -5,11 +5,11 @@
 
 void push(Stack *stack, int value)
 {
-    if (stack->top == MAX_STACK_SIZE - 1)
-    {
-        fprintf(stderr, "Error: stack overflow\n");
-        exit(EXIT_FAILURE);
-    }
+	if (stack->top == MAX_STACK_SIZE - 1)
+	{
+		fprintf(stderr, "Error: stack overflow\n");
+		exit(EXIT_FAILURE);
+	}
 
-    stack->data[++stack->top] = value;
+	stack->data[++stack->top] = value;
 }

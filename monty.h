@@ -5,8 +5,8 @@
 
 typedef struct stack
 {
-    int data[MAX_STACK_SIZE];
-    int top;
+	int data[MAX_STACK_SIZE];
+	int top;
 } Stack;
 
 void push(Stack *stack, int value);
