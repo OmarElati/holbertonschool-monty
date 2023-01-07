@@ -20,5 +20,4 @@ void pall(stack_t **stack, unsigned int nline)
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
-	printf("0\n");
 }
