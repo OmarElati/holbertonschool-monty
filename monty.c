@@ -3,56 +3,26 @@
 /**
  * main - ..
  * @argc: ..
- * @argc: ..
+ * @argv: ..
  * Return: ..
 */
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: monty file\n");
-        return EXIT_FAILURE;
-    }
+	FILE *file;
 
-    FILE *fp = fopen(argv[1], "r");
-    if (!fp)
-    {
-        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-        return EXIT_FAILURE;
-    }
-
-    stack_t *stack = NULL;
-
-    instruction_t ops[] = {
-        {"push", push},
-        {"pall", pall},
-        {NULL, NULL}
-    };
-
-    char line[256];
-    int line_number = 0;
-    while (fgets(line, sizeof(line), fp))
-    {
-        line_number++;
-
-        char *command = strtok(line, " \n");
-        if (!command)
-            continue;
-
-        int i;
-        for (i = 0; ops[i].opcode; i++)
-            if (strcmp(command, ops[i].opcode) == 0)
-                break;
-
-        if (ops[i].opcode)
-            ops[i].f(&stack, line_number);
-        else
-        {
-            fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
-            return EXIT_FAILURE;
-        }
-    }
-
-    fclose(fp);
-    return 0;
+	/* Check for the correct number of arguments */
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	/* Open the input file */
+	file = fopen(argv[1], "r");
+	if (file == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	parsefile(file);
+	return (EXIT_FAILURE);
 }
