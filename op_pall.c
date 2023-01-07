@@ -12,7 +12,8 @@ void pall(stack_t **stack, unsigned int nline)
 	stack_t *temp = *stack;
 
 	nline += 0;
-	if (temp == NULL) {
+	if (temp == NULL)
+	{
 		printf("0\n");
 	}
 	while (temp)
