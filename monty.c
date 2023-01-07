@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     FILE *fp = fopen(argv[1], "r");
     if (!fp)
     {
-        fprintf(stderr, "Error: failed to open file %s\n", argv[1]);
+        fprintf(stderr, "Error: Can't open file HoLbErToN\n");
         return EXIT_FAILURE;
     }
 
